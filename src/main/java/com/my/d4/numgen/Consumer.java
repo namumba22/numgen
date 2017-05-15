@@ -1,5 +1,9 @@
 package com.my.d4.numgen;
 
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Mode;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -18,6 +22,7 @@ public class Consumer {
     private Consumer() {
     }
 
+    @Benchmark @BenchmarkMode(Mode.Throughput)
     public void handle(int i) {
         lock.writeLock().lock();
         try {
@@ -27,6 +32,7 @@ public class Consumer {
         }
     }
 
+    @Benchmark  @BenchmarkMode(Mode.AverageTime)
     public void writeIntoFile() {
         lock.writeLock().lock();
         try {
