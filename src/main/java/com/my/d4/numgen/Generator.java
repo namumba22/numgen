@@ -1,5 +1,7 @@
 package com.my.d4.numgen;
 
+import org.openjdk.jmh.annotations.*;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -10,6 +12,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class Generator {
 
     static Generator generator;
+
 
     int i = 0;
 

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.concurrent.*;
 import java.util.stream.IntStream;
 
-public class Producer{
+public class Producer {
 
     public final static int THREAD_QUATN = 1000;
     public final static int FIXED_THREADS = 900;
@@ -32,9 +32,9 @@ public class Producer{
     }
 
     static {
-        Thread printDeamon = new Thread(){
+        Thread printDeamon = new Thread() {
             @Override
-            public void run(){
+            public void run() {
                 while (!Thread.currentThread().isInterrupted()) {
                     Consumer.getInstance().writeIntoFile();
 
@@ -74,4 +74,6 @@ public class Producer{
 
 
     }
+
+
 }

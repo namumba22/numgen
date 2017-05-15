@@ -15,6 +15,12 @@
             <artifactId>jmh-core</artifactId>
             <version>1.19</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>1.19</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
 
     </dependencies>
     <build>
@@ -28,7 +34,7 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+              <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
@@ -44,12 +50,48 @@
                             <mainClass>com.my.d4.numgen.Producer</mainClass>
                         </manifest>
                     </archive>
-
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                 </configuration>
             </plugin>
+
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-shade-plugin</artifactId>-->
+                <!--<version>2.2</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>shade</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<finalName>hallo</finalName>-->
+                            <!--<transformers>-->
+                                <!--<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+                                    <!--<mainClass>org.openjdk.jmh.Main</mainClass>-->
+                                <!--</transformer>-->
+                            <!--</transformers>-->
+                            <!--<filters>-->
+                                <!--<filter>-->
+                                    <!--&lt;!&ndash;-->
+                                        <!--Shading signed JARs will fail without this.-->
+                                        <!--http://stackoverflow.com/questions/999489/invalid-signature-file-when-attempting-to-run-a-jar-->
+                                    <!--&ndash;&gt;-->
+                                    <!--<artifact>*:*</artifact>-->
+                                    <!--<excludes>-->
+                                        <!--<exclude>META-INF/*.SF</exclude>-->
+                                        <!--<exclude>META-INF/*.DSA</exclude>-->
+                                        <!--<exclude>META-INF/*.RSA</exclude>-->
+                                    <!--</excludes>-->
+                                <!--</filter>-->
+                            <!--</filters>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+
 
 
         </plugins>
