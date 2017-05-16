@@ -1,15 +1,13 @@
 package com.my.d4.numgen;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by dumin on 5/12/17.
  */
 public class Utils {
     public static int getDelay(){
-        int newDigit = new Random().nextInt(5-1+1);
-//        System.out.println(String.format("new digit = %04d",newDigit));
-        return newDigit;
+        return ThreadLocalRandom.current().nextInt(5)+1;
     }
-
 }
